@@ -10,8 +10,9 @@
     <script type="module" src="drawGameBoard.js"></script>
     <script type="module" src="dataStorage.js"></script>
     <script type="module" src="pacman.js"></script>
-    <script type="module" src="compareCoordinates.js"></script>
-
+    <script type="module" src="updateGameStatusLose.js"></script>
+    <script type="module" src="processGameStatus.js"></script>
+    <script type="module" src="updateScore.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -81,6 +82,8 @@
         <div></div>
         <div></div>
       </div>
+      <div class="gameStatus gameStatusLost">The game is lost</div>
+      <div class="gameStatus gameStatusWin">The game is won</div>
       <div class="score"></div>
       <div class="button"></div>
     </div>

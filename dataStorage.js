@@ -2,6 +2,7 @@ export const dataStorage = {
   pacman: {
     x: 1,
     y: 1,
+    direction: "down",
   },
 
   barriers: [
@@ -35,11 +36,8 @@ export const dataStorage = {
     y: 1,
   },
 
-  // dot: {
-  //   x:,
-  //   y:,
-  //   fieldStatus:
-  // }
+  gameStatus: "normal",
 
-  //   score:
+  score: 0
+  
 };
