@@ -5,6 +5,7 @@ const cells = Array.from(cellsPseudoArray);
 export function displayBoard() {
   cells.forEach((cell) => {
     cell.classList.remove("pacman");
+    cell.classList.remove("dots");
     cell.classList.remove("ghost");
     cell.classList.remove("barriers");
   });
@@ -15,26 +16,19 @@ export function displayBoard() {
     cells[(coordinates.y - 1) * 8 + (coordinates.x - 1)].classList.add("dots");
   });
 
-  cells[
-    (dataStorage.pacman.y - 1) * 8 + (dataStorage.pacman.x - 1)
-  ].classList.add("pacman");
-
-  cells[
-    (dataStorage.pacman.y - 1) * 8 + (dataStorage.pacman.x - 1)
-  ].classList.remove("dots");
-
-  cells[
-    (dataStorage.ghost.y - 1) * 8 + (dataStorage.ghost.x - 1)
-  ].classList.add("ghost");
-  cells[
-    (dataStorage.ghost.y - 1) * 8 + (dataStorage.ghost.x - 1)
-  ].classList.remove("dots");
-
   dataStorage.barriers.forEach((coordinates) => {
     cells[(coordinates.y - 1) * 8 + (coordinates.x - 1)].classList.add(
       "barriers"
     );
   });
+
+  cells[
+    (dataStorage.pacman.y - 1) * 8 + (dataStorage.pacman.x - 1)
+  ].classList.add("pacman");
+
+  cells[
+    (dataStorage.ghost.y - 1) * 8 + (dataStorage.ghost.x - 1)
+  ].classList.add("ghost");
 
   switch (dataStorage.gameStatus) {
     case "lose":
@@ -45,9 +39,3 @@ export function displayBoard() {
       break;
   }
 }
-
-// export function showDots() {
-//   dataStorage.dots.forEach((coordinates) => {
-//     cells[(coordinates.y - 1) * 8 + (coordinates.x - 1)].classList.add("dots");
-//   });
-// }

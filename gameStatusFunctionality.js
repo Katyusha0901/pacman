@@ -1,5 +1,10 @@
 import { dataStorage } from "./dataStorage.js";
 
+export function updateGameStatus(){
+  updateGameStatusLose()
+  updateGameStatusWin()
+}
+
 export function updateGameStatusLose() {
   if (
     dataStorage.pacman.x === dataStorage.ghost.x &&
