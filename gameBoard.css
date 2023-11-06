@@ -70,3 +70,13 @@ body {
 .gameStatusWin {
   display: none;
 }
+
+.score {
+  font-size: 50px;
+  text-align: center;
+  font-weight: 800;
+  background-color: rgb(255, 40, 3);
+  border: solid 10px;
+  border-color: rgb(247, 211, 10);
+  padding: 10px;
+}

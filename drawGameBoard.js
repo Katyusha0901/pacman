@@ -9,6 +9,8 @@ export function displayBoard() {
     cell.classList.remove("barriers");
   });
 
+  document.querySelector(".score").textContent = `${dataStorage.score}`;
+
   cells[
     (dataStorage.pacman.y - 1) * 8 + (dataStorage.pacman.x - 1)
   ].classList.add("pacman");
@@ -29,8 +31,19 @@ export function displayBoard() {
       "barriers"
     );
   });
+
+  switch (dataStorage.gameStatus) {
+    case "lose":
+      document.querySelector(".gameStatusLost").style.display = "flex";
+      break;
+    case "win":
+      document.querySelector(".gameStatusWin").style.display = "flex";
+      break;
+  }
 }
 
-export function showScore(){
-  document.querySelector('.score').append(`${dataStorage.score}`)
+export function showDots() {
+  dataStorage.dots.forEach((coordinates) => {
+    cells[(coordinates.y - 1) * 8 + (coordinates.x - 1)].classList.add("dots");
+  });
 }

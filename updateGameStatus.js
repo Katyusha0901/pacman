@@ -9,3 +9,10 @@ export function updateGameStatusLose() {
   }
   return;
 }
+
+export function updateGameStatusWin() {
+  if (dataStorage.dots.length === 0) {
+    dataStorage.gameStatus = "win";
+  }
+  return;
+}
