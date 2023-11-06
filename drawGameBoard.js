@@ -11,6 +11,10 @@ export function displayBoard() {
 
   document.querySelector(".score").textContent = `${dataStorage.score}`;
 
+  dataStorage.dots.forEach((coordinates) => {
+    cells[(coordinates.y - 1) * 8 + (coordinates.x - 1)].classList.add("dots");
+  });
+
   cells[
     (dataStorage.pacman.y - 1) * 8 + (dataStorage.pacman.x - 1)
   ].classList.add("pacman");
@@ -42,8 +46,8 @@ export function displayBoard() {
   }
 }
 
-export function showDots() {
-  dataStorage.dots.forEach((coordinates) => {
-    cells[(coordinates.y - 1) * 8 + (coordinates.x - 1)].classList.add("dots");
-  });
-}
+// export function showDots() {
+//   dataStorage.dots.forEach((coordinates) => {
+//     cells[(coordinates.y - 1) * 8 + (coordinates.x - 1)].classList.add("dots");
+//   });
+// }

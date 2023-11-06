@@ -1,9 +1,9 @@
 import { displayBoard } from "./drawGameBoard.js";
-import { showDots } from "./drawGameBoard.js";
-import { movePacman } from "./functionalityForPacman.js";
-import { updateScore } from "./updateScore.js";
-import { updateGameStatusLose } from "./updateGameStatus.js";
-import { updateGameStatusWin } from "./updateGameStatus.js";
+import { movePacman } from "./pacmanFunctionality.js";
+import { dotsFunctionality } from "./dotsFunctionality.js";
+import { updateScore } from "./scoreFunctionality.js";
+import { updateGameStatusLose } from "./gameStatusFunctionality.js";
+import { updateGameStatusWin } from "./gameStatusFunctionality.js";
 
 export function circle() {
   displayBoard();
@@ -11,9 +11,9 @@ export function circle() {
   updateGameStatusLose();
   updateGameStatusWin();
   updateScore();
+  dotsFunctionality()
 
   setTimeout(circle, 1000);
 }
 
-showDots();
 circle();
