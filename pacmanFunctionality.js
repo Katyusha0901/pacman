@@ -18,8 +18,6 @@ document.addEventListener("keydown", function (event) {
       dataStorage.pacman.direction = "down";
       break;
   }
-console.log(dataStorage.ghost.direction)
-
   drawGameBoard();
 });
 

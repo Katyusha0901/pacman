@@ -32,8 +32,64 @@ export function getDeltas() {
       };
       break;
   }
-  console.log(dataStorage.ghost.direction)
-  console.log(deltas);
+  return deltas;
+}
+
+function getCoordinates() {
+  let deltasForGetCoordinates = getDeltas();
+  return {
+    forwardCell: {
+      x: dataStorage.ghost.x + deltasForGetCoordinates.forward.x,
+      y: dataStorage.ghost.y + deltasForGetCoordinates.forward.y,
+    },
+    leftCell: {
+      x: dataStorage.ghost.x + deltasForGetCoordinates.left.x,
+      y: dataStorage.ghost.y + deltasForGetCoordinates.left.y,
+    },
+    rightCell: {
+      x: dataStorage.ghost.x + deltasForGetCoordinates.right.x,
+      y: dataStorage.ghost.y + deltasForGetCoordinates.right.y,
+    },
+  };
+}
+
+function isThereWall() {
+  dataStorage.barriers.forEach((coordinates) => {
+    if (
+      (getCoordinates.forwardCell.x === coordinates.x &&
+        getCoordinates.forwardCell.y === coordinates.y) ||
+      (getCoordinates.leftCell.x === coordinates.x &&
+        getCoordinates.leftCell.y === coordinates.y) ||
+      (getCoordinates.rightCell.x === coordinates.x &&
+        getCoordinates.rightCell.y === coordinates.y)
+    ) {
+      return;
+    }
+  });
+}
+
+function isOutOfBounds() {
+  if (
+    getCoordinates.forwardCell.x < 1 ||
+    getCoordinates.forwardCell.x > 8 ||
+    getCoordinates.leftCell.x < 1 ||
+    getCoordinates.leftCell.x > 8 ||
+    getCoordinates.rightCell.x < 1 ||
+    getCoordinates.rightCell.x > 8 ||
+    getCoordinates.forwardCell.y < 1 ||
+    getCoordinates.forwardCell.y > 8 ||
+    getCoordinates.leftCell.y < 1 ||
+    getCoordinates.leftCell.y > 8 ||
+    getCoordinates.rightCell.y < 1 ||
+    getCoordinates.rightCell.y > 8
+  ) {
+    return;
+  }
+}
+
+function checkAvailability() {
+  isThereWall();
+  isOutOfBounds();
 }
 
 getDeltas();

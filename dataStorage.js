@@ -3,12 +3,6 @@ export const dataStorage = {
     x: 1,
     y: 1,
   },
-  // pacman: {
-  //   x: 5,
-  //   y: 4,
-  //   direction: "left",
-  // },
-
 
   barriers: [
     { x: 2, y: 1 },
@@ -41,6 +35,7 @@ export const dataStorage = {
     y: 1,
     direction: 'down'
   },
+
 
   dots: [
     { y: 1, x: 4 },
