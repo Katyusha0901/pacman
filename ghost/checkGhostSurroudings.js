@@ -56,12 +56,18 @@ function getCoordinates() {
 function isThereWall() {
   dataStorage.barriers.forEach((coordinates) => {
     if (
-      (getCoordinates.forwardCell.x === coordinates.x &&
-        getCoordinates.forwardCell.y === coordinates.y) ||
-      (getCoordinates.leftCell.x === coordinates.x &&
-        getCoordinates.leftCell.y === coordinates.y) ||
-      (getCoordinates.rightCell.x === coordinates.x &&
-        getCoordinates.rightCell.y === coordinates.y)
+      getCoordinates.forwardCell.x === coordinates.x &&
+      getCoordinates.forwardCell.y === coordinates.y
+    ) {
+      return;
+    } else if (
+      getCoordinates.leftCell.x === coordinates.x &&
+      getCoordinates.leftCell.y === coordinates.y
+    ) {
+      return;
+    } else if (
+      getCoordinates.rightCell.x === coordinates.x &&
+      getCoordinates.rightCell.y === coordinates.y
     ) {
       return;
     }
@@ -72,14 +78,20 @@ function isOutOfBounds() {
   if (
     getCoordinates.forwardCell.x < 1 ||
     getCoordinates.forwardCell.x > 8 ||
+    getCoordinates.forwardCell.y < 1 ||
+    getCoordinates.forwardCell.y > 8
+  ) {
+    return;
+  } else if (
     getCoordinates.leftCell.x < 1 ||
     getCoordinates.leftCell.x > 8 ||
+    getCoordinates.leftCell.y < 1 ||
+    getCoordinates.leftCell.y > 8
+  ) {
+    return;
+  } else if (
     getCoordinates.rightCell.x < 1 ||
     getCoordinates.rightCell.x > 8 ||
-    getCoordinates.forwardCell.y < 1 ||
-    getCoordinates.forwardCell.y > 8 ||
-    getCoordinates.leftCell.y < 1 ||
-    getCoordinates.leftCell.y > 8 ||
     getCoordinates.rightCell.y < 1 ||
     getCoordinates.rightCell.y > 8
   ) {
@@ -91,5 +103,7 @@ function checkAvailability() {
   isThereWall();
   isOutOfBounds();
 }
+
+
 
 getDeltas();
