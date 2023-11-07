@@ -1,4 +1,5 @@
 import { dataStorage } from "./dataStorage.js";
+import { drawGameBoard } from "./drawGameBoard.js";
 
 document.addEventListener("keydown", function (event) {
   switch (event.code) {
@@ -15,9 +16,9 @@ document.addEventListener("keydown", function (event) {
 
     case "ArrowDown":
       dataStorage.pacman.direction = "down";
-
       break;
   }
+  drawGameBoard();
 });
 
 export function movePacman() {
@@ -29,13 +30,10 @@ export function movePacman() {
       break;
     case "left":
       newCoordinates.x = dataStorage.pacman.x - 1;
-
       break;
-
     case "up":
       newCoordinates.y = dataStorage.pacman.y - 1;
       break;
-
     case "down":
       newCoordinates.y = dataStorage.pacman.y + 1;
       break;
