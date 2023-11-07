@@ -30,6 +30,24 @@ export function displayBoard() {
     (dataStorage.ghost.y - 1) * 8 + (dataStorage.ghost.x - 1)
   ].classList.add("ghost");
 
+  switch (dataStorage.pacman.direction) {
+    case "right":
+      document.querySelector(".pacman").style.transform = "none";
+      break;
+    case "left":
+      document.querySelector(".pacman").style.transform = "none";
+      document.querySelector(".pacman").style.transform = "scalex(-1)";
+      break;
+
+    case "up":
+      document.querySelector(".pacman").style.transform = "rotate(0.75turn)";
+      break;
+
+    case "down":
+      document.querySelector(".pacman").style.transform = "rotate(0.25turn)";
+      break;
+  }
+
   switch (dataStorage.gameStatus) {
     case "lose":
       document.querySelector(".gameStatusLost").style.display = "flex";
