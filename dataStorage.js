@@ -2,8 +2,13 @@ export const dataStorage = {
   pacman: {
     x: 1,
     y: 1,
-    direction: "down",
   },
+  // pacman: {
+  //   x: 5,
+  //   y: 4,
+  //   direction: "left",
+  // },
+
 
   barriers: [
     { x: 2, y: 1 },

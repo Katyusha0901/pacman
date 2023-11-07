@@ -18,12 +18,13 @@ document.addEventListener("keydown", function (event) {
       dataStorage.pacman.direction = "down";
       break;
   }
+console.log(dataStorage.ghost.direction)
+
   drawGameBoard();
 });
 
 export function movePacman() {
   const newCoordinates = { x: dataStorage.pacman.x, y: dataStorage.pacman.y };
-
   switch (dataStorage.pacman.direction) {
     case "right":
       newCoordinates.x = dataStorage.pacman.x + 1;
