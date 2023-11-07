@@ -5,7 +5,7 @@ const cells = Array.from(cellsPseudoArray);
 export function drawGameBoard() {
   let pacmanIndex = (dataStorage.pacman.y - 1) * 8 + (dataStorage.pacman.x - 1);
   let ghostIndex = (dataStorage.ghost.y - 1) * 8 + (dataStorage.ghost.x - 1);
-  
+
   cells.forEach((cell) => {
     cell.classList.remove("pacman");
     cell.classList.remove("dots");
@@ -39,11 +39,9 @@ export function drawGameBoard() {
       document.querySelector(".pacman").style.transform = "none";
       document.querySelector(".pacman").style.transform = "scalex(-1)";
       break;
-
     case "up":
       document.querySelector(".pacman").style.transform = "rotate(0.75turn)";
       break;
-
     case "down":
       document.querySelector(".pacman").style.transform = "rotate(0.25turn)";
       break;
