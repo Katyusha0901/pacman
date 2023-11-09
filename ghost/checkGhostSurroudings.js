@@ -73,19 +73,22 @@ function checkAvailability(coordinates) {
 }
 
 getDeltas();
-canMoveForward();
-canTurnRight();
-canTurnLeft();
-console.log(canMoveForward());
+cannotMoveForward();
+cannotTurnRight();
+cannotTurnLeft();
 
-export function canMoveForward() {
+export function cannotMoveForward() {
   return checkAvailability(getCoordinates().forward);
 }
 
-export function canTurnRight() {
+export function cannotTurn() {
+  return cannotTurnRight(), cannotTurnLeft();
+}
+
+export function cannotTurnRight() {
   return checkAvailability(getCoordinates().right);
 }
 
-export function canTurnLeft() {
+export function cannotTurnLeft() {
   return checkAvailability(getCoordinates().left);
 }
