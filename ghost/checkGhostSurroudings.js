@@ -35,75 +35,55 @@ export function getDeltas() {
   return deltas;
 }
 
-function getCoordinates() {
+export function getCoordinates() {
   let deltasForGetCoordinates = getDeltas();
   return {
-    forwardCell: {
+    forward: {
       x: dataStorage.ghost.x + deltasForGetCoordinates.forward.x,
       y: dataStorage.ghost.y + deltasForGetCoordinates.forward.y,
     },
-    leftCell: {
+    left: {
       x: dataStorage.ghost.x + deltasForGetCoordinates.left.x,
       y: dataStorage.ghost.y + deltasForGetCoordinates.left.y,
     },
-    rightCell: {
+    right: {
       x: dataStorage.ghost.x + deltasForGetCoordinates.right.x,
       y: dataStorage.ghost.y + deltasForGetCoordinates.right.y,
     },
   };
 }
 
-function isThereWall() {
-  dataStorage.barriers.forEach((coordinates) => {
-    if (
-      getCoordinates.forwardCell.x === coordinates.x &&
-      getCoordinates.forwardCell.y === coordinates.y
-    ) {
-      return;
-    } else if (
-      getCoordinates.leftCell.x === coordinates.x &&
-      getCoordinates.leftCell.y === coordinates.y
-    ) {
-      return;
-    } else if (
-      getCoordinates.rightCell.x === coordinates.x &&
-      getCoordinates.rightCell.y === coordinates.y
-    ) {
-      return;
-    }
+function isThereWall(coordinates) {
+  return dataStorage.barriers.some((barrier) => {
+    return barrier.x === coordinates.x && barrier.y === coordinates.y;
   });
 }
 
-function isOutOfBounds() {
-  if (
-    getCoordinates.forwardCell.x < 1 ||
-    getCoordinates.forwardCell.x > 8 ||
-    getCoordinates.forwardCell.y < 1 ||
-    getCoordinates.forwardCell.y > 8
-  ) {
-    return;
-  } else if (
-    getCoordinates.leftCell.x < 1 ||
-    getCoordinates.leftCell.x > 8 ||
-    getCoordinates.leftCell.y < 1 ||
-    getCoordinates.leftCell.y > 8
-  ) {
-    return;
-  } else if (
-    getCoordinates.rightCell.x < 1 ||
-    getCoordinates.rightCell.x > 8 ||
-    getCoordinates.rightCell.y < 1 ||
-    getCoordinates.rightCell.y > 8
-  ) {
-    return;
-  }
+function isOutOfBounds(coordinates) {
+  return (
+    coordinates.x < 1 ||
+    coordinates.x > 8 ||
+    coordinates.y < 1 ||
+    coordinates.y > 8
+  );
 }
 
-function checkAvailability() {
-  isThereWall();
-  isOutOfBounds();
+function checkAvailability(coordinates) {
+  isThereWall(coordinates);
+  isOutOfBounds(coordinates);
 }
-
-
 
 getDeltas();
+canMoveForward();
+
+export function canMoveForward() {
+  checkAvailability(getCoordinates().forward);
+}
+
+export function canTurnRight(){
+  checkAvailability(getCoordinates().right)
+}
+
+export function canTurnLeft(){
+  checkAvailability(getCoordinates().left)
+}

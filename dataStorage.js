@@ -32,7 +32,7 @@ export const dataStorage = {
 
   ghost: {
     x: 7,
-    y: 1,
+    y: 6,
     direction: 'down'
   },
 
