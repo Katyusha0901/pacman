@@ -69,21 +69,23 @@ function isOutOfBounds(coordinates) {
 }
 
 function checkAvailability(coordinates) {
-  isThereWall(coordinates);
-  isOutOfBounds(coordinates);
+  return isOutOfBounds(coordinates), isThereWall(coordinates);
 }
 
 getDeltas();
 canMoveForward();
+canTurnRight();
+canTurnLeft();
+console.log(canMoveForward());
 
 export function canMoveForward() {
-  checkAvailability(getCoordinates().forward);
+  return checkAvailability(getCoordinates().forward);
 }
 
-export function canTurnRight(){
-  checkAvailability(getCoordinates().right)
+export function canTurnRight() {
+  return checkAvailability(getCoordinates().right);
 }
 
-export function canTurnLeft(){
-  checkAvailability(getCoordinates().left)
+export function canTurnLeft() {
+  return checkAvailability(getCoordinates().left);
 }
