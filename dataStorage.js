@@ -31,11 +31,10 @@ export const dataStorage = {
   ],
 
   ghost: {
-    x: 7,
-    y: 1,
-    direction: 'down'
+    x: 6,
+    y: 5,
+    direction: "down",
   },
-
 
   dots: [
     { y: 1, x: 4 },

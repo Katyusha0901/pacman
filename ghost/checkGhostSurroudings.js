@@ -69,13 +69,24 @@ function isOutOfBounds(coordinates) {
 }
 
 function checkAvailability(coordinates) {
-  return isOutOfBounds(coordinates), isThereWall(coordinates);
+  if (isOutOfBounds(coordinates)) {
+    if (!isThereWall(coordinates)) {
+      return false;
+    }
+  } else if (isThereWall(coordinates)) {
+    if (!isOutOfBounds(coordinates)) {
+      return false;
+    }
+  } else if (isOutOfBounds(coordinates)) {
+    if (isThereWall(coordinates)) {
+      return false;
+    }
+  } else if (!isOutOfBounds(coordinates)) {
+    if (!isThereWall(coordinates)) {
+      return true;
+    }
+  }
 }
-
-getDeltas();
-canMoveForward();
-canTurnRight();
-canTurnLeft();
 
 export function canMoveForward() {
   return checkAvailability(getCoordinates().forward);
