@@ -87,7 +87,7 @@ function checkAvailability(coordinates) {
     }
   }
 }
-
+console.log(checkAvailability(getCoordinates().forward))
 export function canMoveForward() {
   return checkAvailability(getCoordinates().forward);
 }

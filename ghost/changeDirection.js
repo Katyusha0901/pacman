@@ -5,10 +5,15 @@ import { canTurnRight } from "./checkGhostSurroudings.js";
 import { canTurnLeft } from "./checkGhostSurroudings.js";
 
 export function changeDirection() {
+  console.log(canMoveForward());
   if (!canMoveForward() && canTurn()) {
     turn();
   } else if (!canMoveForward() & !canTurn()) {
     back();
+  } else if (canMoveForward() && canTurn()) {
+    turnWithProbability();
+  } else if (canMoveForward() && !canTurn()) {
+    dataStorage.ghost.direction = dataStorage.ghost.direction;
   }
 }
 
@@ -49,8 +54,32 @@ function back() {
   }
 }
 
+function turnWithProbability() {
+  switch (dataStorage.ghost.direction) {
+    case "down":
+      dataStorage.ghost.direction = turnLeftOrRightProbability();
+      break;
+    case "up":
+      dataStorage.ghost.direction = turnLeftOrRightProbability();
+      break;
+    case "right":
+      dataStorage.ghost.direction = ternUpOrDownProbability();
+      break;
+    case "left":
+      dataStorage.ghost.direction = ternUpOrDownProbability();
+      break;
+  }
+}
 
-console.log(dataStorage.ghost.direction);
-console.log(canMoveForward())
+function turnLeftOrRightProbability() {
+  const sides = ["right", "left"];
+  return sides[Math.floor(Math.random() * sides.length)];
+}
+
+function ternUpOrDownProbability() {
+  const sides = ["up", "down"];
+  return sides[Math.floor(Math.random() * sides.length)];
+}
+
+// console.log(dataStorage.ghost.direction);
 changeDirection();
-console.log(dataStorage.ghost.direction);
