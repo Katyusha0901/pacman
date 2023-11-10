@@ -31,9 +31,9 @@ export const dataStorage = {
   ],
 
   ghost: {
-    x: 3,
-    y: 4,
-    direction: "left",
+    x: 7,
+    y: 1,
+    direction: "down",
   },
 
   dots: [

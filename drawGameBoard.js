@@ -50,6 +50,7 @@ export function drawGameBoard() {
   switch (dataStorage.gameStatus) {
     case "lose":
       document.querySelector(".gameStatusLost").style.display = "flex";
+      document.querySelector(".pacman").style.display = "none";
       break;
     case "win":
       document.querySelector(".gameStatusWin").style.display = "flex";

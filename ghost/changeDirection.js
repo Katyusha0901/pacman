@@ -5,7 +5,6 @@ import { canTurnRight } from "./checkGhostSurroudings.js";
 import { canTurnLeft } from "./checkGhostSurroudings.js";
 
 export function changeDirection() {
-  console.log(canMoveForward());
   if (!canMoveForward() && canTurn()) {
     turn();
   } else if (!canMoveForward() & !canTurn()) {
@@ -81,5 +80,4 @@ function ternUpOrDownProbability() {
   return sides[Math.floor(Math.random() * sides.length)];
 }
 
-// console.log(dataStorage.ghost.direction);
-changeDirection();
+changeDirection()
