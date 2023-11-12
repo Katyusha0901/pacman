@@ -7,7 +7,8 @@ import { changeDirection } from "./ghost/changeDirection.js";
 
 export function circle() {
   movePacman();
-  moveGhost()
+  updateGameStatus();
+  moveGhost();
   updateGameStatus();
   updateScore();
   drawGameBoard();
