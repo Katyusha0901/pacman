@@ -61,31 +61,15 @@ function isThereWall(coordinates) {
 
 function isOutOfBounds(coordinates) {
   return (
-    coordinates.x < 1 ||
     coordinates.x > 8 ||
+    coordinates.x < 1 ||
     coordinates.y < 1 ||
     coordinates.y > 8
   );
 }
 
 function checkAvailability(coordinates) {
-  if (isOutOfBounds(coordinates)) {
-    if (!isThereWall(coordinates)) {
-      return false;
-    }
-  } else if (isThereWall(coordinates)) {
-    if (!isOutOfBounds(coordinates)) {
-      return false;
-    }
-  } else if (isOutOfBounds(coordinates)) {
-    if (isThereWall(coordinates)) {
-      return false;
-    }
-  } else if (!isOutOfBounds(coordinates)) {
-    if (!isThereWall(coordinates)) {
-      return true;
-    }
-  }
+ return !isThereWall(coordinates) && !isOutOfBounds(coordinates)
 }
 
 export function canMoveForward() {
@@ -94,7 +78,7 @@ export function canMoveForward() {
 }
 
 export function canTurn() {
-  return canTurnRight(), canTurnLeft();
+  return canTurnRight() && canTurnLeft();
 }
 
 export function canTurnRight() {
