@@ -1,4 +1,5 @@
 import { dataStorage } from "./dataStorage.js";
+import { drawGameBoard } from "./drawGameBoard.js";
 
 export function updateGameStatus(){
   updateGameStatusLose()

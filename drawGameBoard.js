@@ -24,33 +24,33 @@ export function drawGameBoard() {
     let coordinatesIndex = (coordinates.y - 1) * 8 + (coordinates.x - 1);
     cells[coordinatesIndex].classList.add("barriers");
   });
+  if (dataStorage.gameStatus === "normal") {
+    cells[pacmanIndex].classList.add("pacman");
 
-  cells[pacmanIndex].classList.add("pacman");
+    cells[ghostIndex].classList.remove("dots");
 
-  cells[ghostIndex].classList.remove("dots");
+    cells[ghostIndex].classList.add("ghost");
 
-  cells[ghostIndex].classList.add("ghost");
-
-  switch (dataStorage.pacman.direction) {
-    case "right":
-      document.querySelector(".pacman").style.transform = "none";
-      break;
-    case "left":
-      document.querySelector(".pacman").style.transform = "none";
-      document.querySelector(".pacman").style.transform = "scalex(-1)";
-      break;
-    case "up":
-      document.querySelector(".pacman").style.transform = "rotate(0.75turn)";
-      break;
-    case "down":
-      document.querySelector(".pacman").style.transform = "rotate(0.25turn)";
-      break;
+    switch (dataStorage.pacman.direction) {
+      case "right":
+        document.querySelector(".pacman").style.transform = "none";
+        break;
+      case "left":
+        document.querySelector(".pacman").style.transform = "none";
+        document.querySelector(".pacman").style.transform = "scalex(-1)";
+        break;
+      case "up":
+        document.querySelector(".pacman").style.transform = "rotate(0.75turn)";
+        break;
+      case "down":
+        document.querySelector(".pacman").style.transform = "rotate(0.25turn)";
+        break;
+    }
   }
 
   switch (dataStorage.gameStatus) {
     case "lose":
       document.querySelector(".gameStatusLost").style.display = "flex";
-      document.querySelector(".pacman").style.display = "none";
       break;
     case "win":
       document.querySelector(".gameStatusWin").style.display = "flex";
